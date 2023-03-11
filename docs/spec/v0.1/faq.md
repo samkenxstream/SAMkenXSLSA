@@ -1,6 +1,9 @@
 ---
 title: Frequently Asked Questions
 layout: specifications
+prev_page:
+    title: Threats and mitigations
+    url: threats
 ---
 
 ## Q: Why is SLSA not transitive?
@@ -14,7 +17,7 @@ independent from one another, it allows parallel progress and prioritization
 based on risk. (This is a lesson we learned when deploying other security
 controls at scale throughout Google.) We expect SLSA ratings to be composed to
 describe a supply chain's overall security stance, as described in the case
-study [vision](../example.md#vision-case-study).
+study [vision](../../example.md#vision-case-study).
 
 ## Q: What about reproducible builds?
 
@@ -30,7 +33,7 @@ bit-for-bit identical output. This property
 including easier debugging, more confident cherry-pick releases, better build
 caching and storage efficiency, and accurate dependency tracking.
 
-For these reasons, SLSA 4 [requires](../levels.md#level-requirements) reproducible builds
+For these reasons, SLSA 4 [requires](levels.md#detailed-explanation) reproducible builds
 unless there is a justification why the build cannot be made reproducible.
 [Example](https://lists.reproducible-builds.org/pipermail/rb-general/2021-January/002177.html)
 justifications include profile-guided optimizations or code signing that
