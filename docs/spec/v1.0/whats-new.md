@@ -1,13 +1,12 @@
 ---
+title: What's new in SLSA v1.0
+description: SLSA v1.0 represents changes made in response to feedback from the SLSA community and early adopters of SLSA v0.1. Overall, these changes prioritize simplicity and practicality.
 prev_page:
-  title: Introduction
-  url: ./
-next_page:
-  title: Security levels
-  url: levels
----
+  url: index
 
-# What's New in SLSA v1.0
+next_page:
+  url: principles
+---
 
 SLSA v1.0 represents changes made in response to feedback from the SLSA
 community and early adopters of SLSA v0.1. Overall, these changes

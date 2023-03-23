@@ -1,11 +1,10 @@
 ---
-title: Frequently Asked Questions
+title: Frequently asked questions
+descriptions: Answers to questions frequently asked about the SLSA specification.
 layout: specifications
 prev_page:
-  title: Threats and mitigations
-  url: threats
+  url:  threats-overview
 next_page:
-  title: Future directions
   url: future-directions
 ---
 

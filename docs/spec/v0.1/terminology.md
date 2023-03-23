@@ -1,18 +1,13 @@
 ---
 title: Terminology
+description: Start here to understand how we model supply chains.
 prev_page:
-  title: Introduction
-  url: ./
+  url: index
 next_page:
-  title: Security levels
   url: levels
 ---
-<div class="subtitle">
-
 Before diving into the [SLSA Levels](levels.md), we need to establish a core set
 of terminology and models to describe what we're protecting.
-
-</div>
 
 ## Software supply chain
 
