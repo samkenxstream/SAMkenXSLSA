@@ -4,19 +4,19 @@
     "subject": [...],
 
     // Predicate:
-    "predicateType": "https://slsa.dev/provenance/v1?draft",
+    "predicateType": "https://slsa.dev/provenance/v1",
     "predicate": {
         "buildDefinition": {
             "buildType": string,
             "externalParameters": object,
-            "systemParameters": object,
+            "internalParameters": object,
             "resolvedDependencies": [ ...#ResourceDescriptor ],
         },
         "runDetails": {
             "builder": {
                 "id": string,
-                "version": string,
                 "builderDependencies": [ ...#ResourceDescriptor ],
+                "version": { ...string },
             },
             "metadata": {
                 "invocationId": string,

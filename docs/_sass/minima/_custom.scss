@@ -403,23 +403,10 @@ details {
 }
 
 .select-dropdown {
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 7L11.1962 0.25H0.803847L6 7Z' fill='%23000000'/%3E%3C/svg%3E%0A");
-  background-position: right 10px center;
-  background-repeat: no-repeat;
-  background-size: auto 15%;
-  background-color: transparent;
-  // disable default appearance
-  outline: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  &::-ms-expand { display: none };
   cursor: pointer;
-
   position: relative;
-  min-width: 100%;
-  outline: none;
   font-family: "Prodigy";
+  font-size: 80%;
   line-height: 1;
 }
 
@@ -516,7 +503,7 @@ dl.as-table {
     top: $spacer-l !important;
   }
 
-  > input[type=checkbox]:checked + div {
+  #important-messages-checkbox:checked + & {
     display: none;
   }
 
@@ -544,6 +531,12 @@ dl.as-table {
   }
 }
 
+// When the banner is shown, add enough scroll-margin to all clickable links so
+// that the clicked element is not occluded by the banner.
+#important-messages-checkbox:not(:checked) ~ main *[id] {
+  scroll-margin-top: 100px;
+}
+
 body {
     --scrollbar-width: 0px;
     --sidebar-width: 250px;
@@ -567,6 +560,22 @@ body {
     @include media-query-min($on-laptop) {
         display: none;
     }
+}
+
+// When a link is clicked, add enough scroll-padding to sure the header does not
+// occlude it, and briefly highlight it with a different color.
+html {
+    scroll-padding-top: $header-height+$spacer-m;
+    @include media-query-min($on-laptop) {
+        scroll-padding-top: $spacer-m;
+    }
+}
+.site-content :target {
+  animation: briefHighlight 2s;
+}
+@keyframes briefHighlight {
+  0% { background: $green-lighter; }
+  100% { background: none; }
 }
 
 .site-header-inner {
@@ -647,40 +656,49 @@ body {
 }
 
 .site-nav {
+    // We want spacing between elements to *look* like line-height 1.7 but have
+    // reduced spacing within an element so it looks like a single element.
+    // To achieve this, we set line-height to 1.3 and add the remainder to the
+    // padding top/bottom. That is:
+    //    line-height 1.7 = line-height 1.3 + padding-top 0.2em + padding-bottom 0.2em
+    // This is *almost* correct, except:
+    // -  The baseline gets shifted up by one pixel, so we compensate by adding
+    //    +1/-1 padding to the top/bottom.
+    // -  The actual height is 0.02px smaller with the padding trick, which
+    //    results in random elements shifting by a pixel.
+    // (It is unclear why either of the above are true.)
+    line-height: 1.3;
+    font-family: "Prodigy";
+
     li li {
         padding-left: $spacer-l;
     }
 
-    li,
+    li > span {
+        display: block;
+        // For some reason, the simulated line-height 1.7 (see above) has a
+        // baseline that is 1px higher than a real line-height 1.7. To fix this,
+        // offset the line by one pixel via padding.
+        padding: calc(0.2em + 1px) 8px calc(0.2em - 1px);
+    }
+
     a[href] {
         color: $text-color-light;
         display: block;
-        font-family: "Prodigy";
-    }
-
-    li {
-        line-height: $base-line-height;
-        text-indent: 8px;
-    }
-
-    a[href] {
         font-weight: $base-font-weight;
-        padding: 2px 8px 4px;
+        // Add a little extra vertical padding to space elements out.
+        padding: calc(0.2em + 1px + 2px) 8px calc(0.2em - 1px + 4px);
         text-decoration: none;
-        text-indent: 0;
-
-        &:hover,
-        &:focus,
-        &.is-active {
-            color: $green-light;
-            text-decoration: none;
-        }
 
         &.is-active {
             background: $green-light;
             border-radius: 2px;
             color: $text-color;
         }
+    }
+
+    .section-title {
+        color: $green-light
     }
 }
 

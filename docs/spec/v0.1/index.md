@@ -1,8 +1,6 @@
 ---
 title: Introduction
 description: Overview of the SLSA standards and technical controls to improve artifact integrity.
-next_page:
-    url: terminology
 layout: standard
 stages:
     - 1:
@@ -189,7 +187,7 @@ below, along with the rest of the essential specifications.
     </div>
 </a>
 </section>
-<section x-data="{ specificationPages: [], currentVersion: `{{site.current_spec_version|replace: "v", ""}}` }" class="section flex flex-col justify-center items-center">
+<section class="section flex flex-col justify-center items-center">
     <div class="wrapper inner w-full">
         <div class="md:flex justify-between items-start">
 <!-- no indentation here to get markdown working with jekyll commonmark for styling the headings better -->

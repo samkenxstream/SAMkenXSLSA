@@ -1,11 +1,7 @@
 ---
 title: Frequently asked questions
-descriptions: Answers to questions frequently asked about the SLSA specification.
+description: Answers to questions frequently asked about SLSA.
 layout: specifications
-prev_page:
-  url:  threats-overview
-next_page:
-  url: future-directions
 ---
 
 ## Q: Why is SLSA not transitive?
@@ -33,17 +29,17 @@ reproducible."
 bit-for-bit identical output. This property
 [provides](https://reproducible-builds.org/docs/buy-in/)
 [many](https://wiki.debian.org/ReproducibleBuilds/About)
-[benefits](https://static.googleusercontent.com/media/sre.google/en//static/pdf/building_secure_and_reliable_systems.pdf#page=357),
+[benefits](https://google.github.io/building-secure-and-reliable-systems/raw/ch14.html#hermeticcomma_reproduciblecomma_or_veri),
 including easier debugging, more confident cherry-pick releases, better build
 caching and storage efficiency, and accurate dependency tracking.
 
-"Verified reproducible" means using two or more independent build systems to
+"Verified reproducible" means using two or more independent build platforms to
 corroborate the provenance of a build. In this way, one can create an overall
-system that is more trustworthy than any of the individual components. This is
+platform that is more trustworthy than any of the individual components. This is
 often
 [suggested](https://www.linuxfoundation.org/en/blog/preventing-supply-chain-attacks-like-solarwinds/)
 as a solution to supply chain integrity. Indeed, this is one option to secure
-build steps of a supply chain. When designed correctly, such a system can
+build steps of a supply chain. When designed correctly, such a platform can
 satisfy all of the SLSA Build level requirements.
 
 That said, verified reproducible builds are not a complete solution to supply
@@ -66,7 +62,7 @@ Therefore, SLSA does not require verified reproducible builds directly. Instead,
 verified reproducible builds are one option for implementing the requirements.
 
 For more on reproducibility, see
-[Hermetic, Reproducible, or Verifiable?](https://sre.google/static/pdf/building_secure_and_reliable_systems.pdf#page=357)
+[Hermetic, Reproducible, or Verifiable?](https://google.github.io/building-secure-and-reliable-systems/raw/ch14.html#hermeticcomma_reproduciblecomma_or_veri)
 
 ## Q: How does SLSA relate to in-toto?
 
@@ -88,3 +84,73 @@ in-toto's official implementations written in
 SLSA Provenance metadata. These APIs are used in other tools generating SLSA
 Provenance such as Sigstore's cosign, the SLSA GitHub Generator, and the in-toto
 Jenkins plugin.
+
+## Q. What is the difference between a build platform, system, and service?
+
+Build platform and build system have been used interchangably in the past. With
+the v1.0 specification, however, there has been a unification around the term
+platform as indicated in the [Terminology](terminology.md). The use of the word
+`system` still exists related to software and services within the build platform
+and to systems outside of a build platform like change management systems.
+
+A build service is a hosted build platform that is often run on shared infrastructure
+instead of individuals' machines and workstations. Its use has also been replaced outside
+of the requirements as it relates to the build platform.
+
+## Q: Is SLSA the same as TACOS?
+
+No.
+[Trusted Attestation and Compliance for Open Source (TACOS)](https://github.com/tacosframework)
+is a framework authored by Tidelift.
+Per their website, TACOS is a framework
+"for assessing the development practices of open source projects
+against a set of secure development standards specified by the (US)
+NIST Secure Software Development Framework (SSDF) V1.1" which
+"vendors can use to provide self-attestation for the open source components
+they rely on."
+
+In contrast, SLSA is a community-developed framework---including
+adoptable guidelines for securing a software supply chain and
+mechanism to evaluate the trustworthiness of artifacts you consume---that
+is part of the Open Source Security Foundation (OpenSSF).
+
+## Q: How does SLSA and SLSA Provenance relate to SBOM?
+
+[Software Bill of Materials (SBOM)] are a frequently recommended tool for
+increased software supply chain rigor. An SBOM is typically focused on
+understanding software in order to evaluate risk through known vulnerabilities
+and license compliance. These use-cases require fine-grained and timely data
+which can be refined to improve signal-to-noise ratio.
+
+[SLSA Provenance] and the [Build track] are focused on trustworthiness of the
+build process. To improve trustworthiness, Provenance is generated in the build
+platform's trusted control plane, which in practice results in it being coarse
+grained. For example, in Provenance metadata completeness of
+`resolvedDependencies` information is on a best-effort basis. Further, the
+`ResourceDescriptor` type does not require version and license information or
+even a URI to the dependency's original location.
+
+While they likely include similar data, SBOMs and SLSA Provenance operate at
+different levels of abstraction. The fine-grained data in an SBOM typically
+describes the components present in a produced artifact, whereas SLSA
+Provenance more coarsely describes parameters of a build which are external to
+the build platform.
+
+The granularity and expressiveness of the two use-cases differs enough that
+current SBOM formats were deemed not a good fit for the requirements of
+the Build track. Yet SBOMs are a good practice and may form part of a future
+SLSA Vulnerabilities track. Further, SLSA Provenance can increase the
+trustworthiness of an SBOM by describing how the SBOM was created.
+
+SLSA Provenance, the wider [in-toto Attestation Framework] in which the
+recommended format sits, and the various SBOM standards, are all rapidly
+evolving spaces. There is ongoing investigation into linking between the
+different formats and exploration of alignment on common models. This FAQ entry
+describes our understanding of the intersection efforts today. We do not know
+how things will evolve over the coming months and years, but we look forward to
+the collaboration and improved software supply chain security.
+
+[Software Bill of Materials (SBOM)]: https://ntia.gov/sbom
+[SLSA Provenance]: ../../provenance/v1.md
+[Build track]: levels.md#build-track
+[in-toto Attestation Framework]: https://github.com/in-toto/attestation/blob/main/spec/

@@ -1,6 +1,6 @@
 # slsa.dev sources
 
-This directory contains sources for [https://slsa.dev](https://slsa.dev), served
+This directory contains sources for https://slsa.dev, served
 via GitHub pages and rendered with Jekyll.
 
 ## Developing and testing locally
@@ -39,12 +39,15 @@ via GitHub pages and rendered with Jekyll.
         password 123abc-your-token
     ```
 
-5.  Run the project locally with `jekyll serve` (optionally appending
-    `--livereload`):
+5.  Run the project locally with `jekyll serve`:
 
     ```bash
-    bundle exec jekyll serve
+    bundle exec jekyll serve --livereload --incremental
     ```
+
+    The options can be omitted if preferred. `--livereload` causes the website
+    to autorefresh after every build. `--incremental` results in faster
+    incremental builds at the cost of possibly missing some changes.
 
 6.  Browse to http://localhost:4000 to view the site locally.
 

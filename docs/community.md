@@ -27,7 +27,7 @@ practical standards, tools, and documentation to reduce software supply chain
 risk in the real world. To succeed, we rely on contributors from a variety
 organizations to help us improve. Whether that's reporting successes or
 challenges, contributing changes to the specification or documentation, or
-developing tooling and services, we welcome your contributions.
+developing tooling, we welcome your contributions.
 
 </div>
 
@@ -79,9 +79,12 @@ developing tooling and services, we welcome your contributions.
 </div>
             </div>
             <div class="w-full md:w-1/2">
-                <div class="rounded-lg text-green p-5 border border-green-400 inline-block mb-8 h4">SLSA v1.0 is coming soon!</div>
-                <p>The SLSA v1.0 release candidate specification is out and <a href="/blog/2023/02/slsa-v1-rc">available for community review</a>. We anticipate a stable release soon. <br><br>
-We’ve released a set of tools and services to generate up to SLSA 3 provenance, and plan to develop further tooling soon.<br><br>
+                <div class="rounded-lg text-green p-5 border border-green-400 inline-block mb-8 h4">SLSA v1.0 is available now!</div>
+                <p>
+                <a href="spec/v1.0/">SLSA v1.0</a> is now available, released in April 2023.
+                We expect the specification to remain stable, with future versions expanding its breadth and depth.
+                For more information about this release, see <a href="/spec/v1.0/whats-new">What's new in v1.0</a>.
+                <br><br>
 Google has been using an internal version of SLSA since 2013 and requires it for all of their production workloads.</p>
             </div>
         </div>
@@ -135,7 +138,7 @@ Google has been using an internal version of SLSA since 2013 and requires it for
                     <ul>
                         <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/brunodom">Bruno Domingues</a> - Intel</li>
                         <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/david-a-wheeler">David A. Wheeler</a> - Linux Foundation</li>
-                        <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/joshuagl">Joshua Lock</a> - VMware</li>
+                        <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/joshuagl">Joshua Lock</a> - Verizon</li>
                         <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/kimsterv">Kim Lewandowski</a> - Chainguard</li>
                         <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/MarkLodato">Mark Lodato</a> - Google</li>
                         <li class="mb-2"><a target="_blank" class="font-bold text-green-darker" href="https://github.com/mlieberman85">Mike Lieberman</a> - Kusari/CNCF</li>
